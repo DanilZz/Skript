@@ -30,49 +30,8 @@ class Command extends CommandS{
 			$this->sendNoPermission($sender);
 			return true;
 		}*/
-		foreach($this->data as $line){
-			$ex = explode(" ", $line);
-			switch(array_shift($ex)){
-				case "выдать":
-					if(array_shift($ex) == "игроку"){
-						switch(array_shift($ex)){
-							case "гм":
-								$p->setGamemode(array_shift($ex));
-							break;
-							case "креатив":
-								$p->setGamemode(1);
-							break;
-							case "выживание":
-								$p->setGamemode(0);
-							break;
-							case "предмет":
-								$p->getInventory()->addItem(Item::get($ex[0], 0, $ex[1]));
-							break;
-						}
-					}
-				break;
-				case "телепортировать":
-					if(array_shift($ex) == "игрока"){
-						if(array_shift($ex) == "на"){
-							if(count($ex) == 3){
-								$p->teleport(new Vector3(...$ex));
-							}else{
-								$p->teleport($p->getLevel()->getSafeSpawn());
-							}
-						}
-					}
-				break;
-				case "сообщение":
-					switch(array_shift($ex){
-						case "игроку":
-							$p->sendMessage(implode(" ", $ex));
-						break;
-						case "всем":
-							$this->getServer()->broadcastMessage(implode(" ", $ex));
-						break;
-					}
-				break;
-			}
+		foreach($this->data as $type => $line){
+			$this->main->getHandler()->handleLine($line, $p);
 		}
 	}
 	
