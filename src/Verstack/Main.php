@@ -20,16 +20,6 @@ class Main extends PluginBase{
 		}
 	}
 	
-	public function event($type, $p){
-		foreach($this->skripts as $sk){
-			if(isset($sk->data[$type])){
-				foreach($sk->data[$type] as $line){
-					$this->getHandler()->handleLine($line, $p);
-				}
-			}
-		}
-	}
-	
 	public function getHandler(){
 		return $this->handler;
 	}
