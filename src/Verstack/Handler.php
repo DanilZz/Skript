@@ -6,10 +6,15 @@ use pocketmine\math\Vector3;
 use pocketmine\item\Item;
 use pocketmine\command\ConsoleCommandSender;
 
-class handler{
+class Handler{
 	
-	public function __construct($main){
-		$this->main = $main;
+	public $skript;
+	
+	public $main;
+	
+	public function __construct($skript){
+		$this->skript = $skript;
+		$this->main = $skript->main;
 	}
 	
 	public function handleFunc($type, $data){
