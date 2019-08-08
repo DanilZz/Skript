@@ -31,7 +31,7 @@ class Command extends CommandS{
 			return true;
 		}*/
 		foreach($this->data as $type => $line){
-			$this->main->getHandler()->handleLine($line, $p);
+			$this->skript->getHandler()->handleLine($line, $p);
 		}
 	}
 	
