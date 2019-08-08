@@ -14,7 +14,6 @@ class Main extends PluginBase{
 	public function onEnable(){
 		@mkdir($this->getDataFolder());
 		$this->handler = new Handler($this);
-		$this->getServer()->getPluginManager()->registerEvents(new Listener($this), $this);
 		$this->getServer()->getLogger()->info("[Skript] Загрузка скриптов...");
 		foreach(glob($this->getDataFolder()."*.sk") as $file){
 			$this->skripts[] = new Skript($this, $file);
