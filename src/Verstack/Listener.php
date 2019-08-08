@@ -13,16 +13,19 @@ class Listener implements Listener2{
 	
 	public $main;
 	
-	public function __construct($main){
-		$this->main = $main;
+	public $skript;
+	
+	public function __construct($skript){
+		$this->main = $skript->main;
+		$this->skript = $skript;
 	}
 	
 	public function onJoin(PlayerJoinEvent $e){
 		$p = $e->getPlayer();
-		$this->main->event("при входе", $p);
+		$this->skript->event("при входе", $p);
 	}
 	
-	public function getServver(){
+	public function getServer(){
 		return $this->main->getServer();
 	}
 	
